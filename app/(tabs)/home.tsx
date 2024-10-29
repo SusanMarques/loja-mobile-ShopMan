@@ -25,8 +25,11 @@ export default function Home() {
     <View style={{ flex: 1 }}>
       <FlatList
         data={products}
-        keyExtractor={(item) => item.id} // O id deve ser uma string
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => <ProductItem data={item} />}
+        horizontal // Ativa a rolagem horizontal
+        showsHorizontalScrollIndicator={false} // Oculta a barra de rolagem horizontal
+        contentContainerStyle={{ paddingHorizontal: 16 }} // Adiciona espaçamento horizontal
       />
     </View>
   );
