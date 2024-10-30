@@ -54,9 +54,9 @@ export default function Home() {
         )}
         horizontal // Ativa a rolagem horizontal
         showsHorizontalScrollIndicator={false} // Oculta a barra de rolagem horizontal
-        contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 8 }} // Adiciona espaçamento
+        contentContainerStyle={{ paddingHorizontal: 16}} // Adiciona espaçamento
       />
-
+      <Text style={styles.tituloProdutos}>Tendências do momento</Text>
       {/* Exibição dos Produtos */}
       <FlatList
         data={products}
@@ -74,7 +74,6 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   categoryItem: {
-    backgroundColor: '#f5f5f5',
     borderRadius: 8,
     padding: 10,
     marginRight: 10,
@@ -90,4 +89,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 5, // Espaço entre a imagem e o texto
   },
+  tituloProdutos:{
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingLeft: 20,
+    paddingBottom: 10
+  },
+  
 });
