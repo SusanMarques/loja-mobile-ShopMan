@@ -32,6 +32,11 @@ export default function Screen(){
                 <FontAwesome size={25} name="plus-square"  style={styles.ico}/>
                 <Text style={styles.tituloMenu}> Cadastrar produtos</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity  style={styles.menuItem} onPress={() => router.push('/menu/cadastrarCategorias')}>
+                <FontAwesome size={25} name="plus-square"  style={styles.ico}/>
+                <Text style={styles.tituloMenu}> Cadastrar categorias</Text>
+            </TouchableOpacity>
             </ScrollView>
         </View>
     );

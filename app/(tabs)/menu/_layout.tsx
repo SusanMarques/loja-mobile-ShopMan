@@ -45,6 +45,15 @@ export default function CategoryLayout(){
                 }}
             />
              
+             <Stack.Screen 
+                name="cadastrarCategorias" 
+                options={{ 
+                    title: 'cadastro de categorias',
+                    headerShown: true, // Exibe o cabeçalho com seta de voltar
+                    headerBackTitle: 'Voltar', // Opcional: define o texto do botão voltar
+                }}
+            />
+             
         </Stack>
     );
 }

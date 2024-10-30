@@ -6,10 +6,10 @@ import "firebase/compat/firestore";
 let firebaseConfig = {
     apiKey: "____",
     authDomain: "____",
-    projectId: "_____",
+    projectId: "____",
     storageBucket: "____",
-    messagingSenderId: "_____",
-    appId: "_____"
+    messagingSenderId: "____",
+    appId: "____"
 };
 
 if (!firebase.apps.length) {
