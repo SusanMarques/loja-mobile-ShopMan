@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react';
 import { View, FlatList, Text, StyleSheet, Image } from 'react-native';
 import { ProductItem } from '../../components/product-item';
-import { Product } from '../../types/product'; // Ajuste para usar 'Product'
+import { Product } from '../../types/product';
 import { db } from '../../firebase';
 
-// Defina o tipo de Categoria
 interface Categoria {
   id: string;
   title: string;
-  cover: string; // Campo para a URL da imagem da categoria
+  cover: string;
 }
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<Categoria[]>([]); // Adicione um estado para categorias
+  const [categories, setCategories] = useState<Categoria[]>([]);
 
   useEffect(() => {
-    // Carregar produtos do Firestore
     const unsubscribeProducts = db.collection('produtos').onSnapshot((snapshot) => {
       const productsData = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -25,7 +23,6 @@ export default function Home() {
       setProducts(productsData);
     });
 
-    // Carregar categorias do Firestore
     const unsubscribeCategories = db.collection('categorias').onSnapshot((snapshot) => {
       const categoriesData = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -35,8 +32,8 @@ export default function Home() {
     });
 
     return () => {
-      unsubscribeProducts(); // Limpar listener de produtos
-      unsubscribeCategories(); // Limpar listener de categorias
+      unsubscribeProducts();
+      unsubscribeCategories();
     };
   }, []);
 
@@ -52,11 +49,14 @@ export default function Home() {
             <Text style={styles.categoryText}>{item.title}</Text>
           </View>
         )}
-        horizontal // Ativa a rolagem horizontal
-        showsHorizontalScrollIndicator={false} // Oculta a barra de rolagem horizontal
-        contentContainerStyle={{ paddingHorizontal: 16}} // Adiciona espaçamento
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 10 }} // Adiciona espaçamento
       />
+
+      {/* Título dos Produtos */}
       <Text style={styles.tituloProdutos}>Tendências do momento</Text>
+
       {/* Exibição dos Produtos */}
       <FlatList
         data={products}
@@ -64,9 +64,9 @@ export default function Home() {
         renderItem={({ item }) => (
           <ProductItem data={item} />
         )}
-        horizontal // Ativa a rolagem horizontal
-        showsHorizontalScrollIndicator={false} // Oculta a barra de rolagem horizontal
-        contentContainerStyle={{ paddingHorizontal: 16 }} // Adiciona espaçamento
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingHorizontal: 16 }}
       />
     </View>
   );
@@ -77,23 +77,23 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 10,
     marginRight: 10,
-    alignItems: 'center', // Centraliza o conteúdo dentro do item da categoria
+    alignItems: 'center',
   },
   categoryImage: {
-    width: 100, // Defina a largura da imagem
-    height: 100, // Defina a altura da imagem
-    borderRadius: 50, // Bordas arredondadas para a imagem
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   },
   categoryText: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginTop: 5, // Espaço entre a imagem e o texto
+    marginTop: 5,
   },
-  tituloProdutos:{
+  tituloProdutos: {
     fontSize: 16,
     fontWeight: 'bold',
     paddingLeft: 20,
-    paddingBottom: 10
+    paddingBottom: 10,
+    marginTop: -10, // Reduzir o espaço entre o título e as categorias
   },
-  
 });
