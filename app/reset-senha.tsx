@@ -5,19 +5,12 @@ import { router } from "expo-router";
 
 export default function Screen(){
 
-    const entrar = () => {
-       alert("Entrar")
+    const enviar = () => {
+       alert("enviar email para redefinir senha")
     };
 
-    const redefinirSenha = () => {
-        router.push('/reset-senha');  // Navega para a tela de redefinição de senha
-    };
-    const registrar = () => {
-        router.push('/registrar');  // Navega para a tela de redefinição de senha
-    };
-
-    const start = () => {
-        router.replace('/home');
+    const login = () => {
+        router.push('/login');  
     };
 
     return(
@@ -34,44 +27,30 @@ export default function Screen(){
                 source={require('../assets/shop-logo.png')}
                 style={styles.logo}
             />
-
-             <TouchableOpacity onPress={start}>
-                    <Text style={styles.LinkTexto}>Ver produtos</Text>
-            </TouchableOpacity>
-            
             <View style={styles.blocoCampo}>
 
+                <Text>Digite seu email para redefinir a senha</Text>
                 <View style={styles.campo}>
-                    <FontAwesome size={25} name="user"  style={styles.ico}/>
+                    <FontAwesome size={25} name="envelope"  style={styles.ico}/>
                     <TextInput 
-                    placeholder="Usuário"
+                    placeholder="Email"
                     />
                 </View>
 
-                <View style={styles.campo}>
-                    <FontAwesome size={25} name="lock"  style={styles.ico}/>
-                    <TextInput 
-                    placeholder="Senha"
-                    />
-                </View>
+            
 
-                <TouchableOpacity onPress={redefinirSenha}>
-                    <Text style={styles.LinkTexto}>Esqueceu a senha?</Text>
-                </TouchableOpacity>
+                <View style={styles.possuiContaTexto}>
+                    <Text >voltar para fazer</Text>
+                    <TouchableOpacity onPress={login}>
+                        <Text style={styles.loginTexto}>Login</Text>
+                    </TouchableOpacity>
+                </View>
                 
             </View>
             <Button
-                title="Entrar"
-                onPress={entrar}
+                title="Enviar"
+                onPress={enviar}
             />
-            <TouchableOpacity onPress={registrar}>
-                    <Text style={styles.LinkTexto}>Registrar conta</Text>
-            </TouchableOpacity>
-
-           
-            
-
-
             
         </SafeAreaView>
     );
@@ -97,7 +76,10 @@ const styles = StyleSheet.create({
     blocoCampo:{
         marginBottom: 10
     },
-    LinkTexto:{
+    possuiContaTexto:{
+        flexDirection: 'row'
+    },
+    loginTexto:{
         color: '#004398'
     },
     campo:{

@@ -9,15 +9,8 @@ export default function Screen(){
        alert("Entrar")
     };
 
-    const redefinirSenha = () => {
-        router.push('/reset-senha');  // Navega para a tela de redefinição de senha
-    };
-    const registrar = () => {
-        router.push('/registrar');  // Navega para a tela de redefinição de senha
-    };
-
-    const start = () => {
-        router.replace('/home');
+    const login = () => {
+        router.push('/login');  // Navega para a tela de redefinição de senha
     };
 
     return(
@@ -34,44 +27,37 @@ export default function Screen(){
                 source={require('../assets/shop-logo.png')}
                 style={styles.logo}
             />
-
-             <TouchableOpacity onPress={start}>
-                    <Text style={styles.LinkTexto}>Ver produtos</Text>
-            </TouchableOpacity>
-            
             <View style={styles.blocoCampo}>
 
                 <View style={styles.campo}>
                     <FontAwesome size={25} name="user"  style={styles.ico}/>
                     <TextInput 
-                    placeholder="Usuário"
+                    placeholder="crie um usuário"
+                    />
+                </View>
+                <View style={styles.campo}>
+                    <FontAwesome size={25} name="envelope"  style={styles.ico}/>
+                    <TextInput 
+                    placeholder="digite o email"
                     />
                 </View>
 
                 <View style={styles.campo}>
                     <FontAwesome size={25} name="lock"  style={styles.ico}/>
                     <TextInput 
-                    placeholder="Senha"
+                    placeholder="crie uma senha"
                     />
                 </View>
 
-                <TouchableOpacity onPress={redefinirSenha}>
-                    <Text style={styles.LinkTexto}>Esqueceu a senha?</Text>
-                </TouchableOpacity>
                 
             </View>
             <Button
-                title="Entrar"
+                title="Registrar"
                 onPress={entrar}
             />
-            <TouchableOpacity onPress={registrar}>
-                    <Text style={styles.LinkTexto}>Registrar conta</Text>
+            <TouchableOpacity onPress={login}>
+                    <Text style={styles.esqueceuaSenhaTexto}>Já possui conta?</Text>
             </TouchableOpacity>
-
-           
-            
-
-
             
         </SafeAreaView>
     );
@@ -97,7 +83,7 @@ const styles = StyleSheet.create({
     blocoCampo:{
         marginBottom: 10
     },
-    LinkTexto:{
+    esqueceuaSenhaTexto:{
         color: '#004398'
     },
     campo:{
