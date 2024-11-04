@@ -2,11 +2,6 @@ import { View, Text, StyleSheet, Image, Linking, ScrollView } from "react-native
 
 export default function Screen() {
 
-    // Função para abrir o LinkedIn
-    const abrirlink = () => {
-        Linking.openURL('https://www.linkedin.com/in/seu-linkedin/');
-    };
-
     return (
         <View style={styles.container}>
             <ScrollView>

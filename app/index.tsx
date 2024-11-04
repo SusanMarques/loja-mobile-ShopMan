@@ -3,18 +3,20 @@ import { Image, Text, StyleSheet, View, StatusBar, TouchableOpacity } from "reac
 import { Button } from "../components/button";
 import { router } from "expo-router";
 
+// Tela inicial do aplicativo
 export default function Screen() {
+    // Função para navegar para a tela de produtos
     const start = () => {
         router.replace('/home');
     };
-
+    // Função para navegar para a tela de login
     const entrar = () => {
-        router.push('/login');  // Navega para a tela de login
+        router.push('/login');  
     };
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar />
+            <StatusBar />// Garante que a barra de status seja exibida
 
             <Image
                 source={require('../assets/background-loja.jpg')}
@@ -32,11 +34,12 @@ export default function Screen() {
                     source={require('../assets/logo-titulo-shopman.png')}
                     style={styles.logoTitulo}
                 />
+                {/* Botão para levar para a página de produtos */}
                 <Button
                     title="Ver produtos"
                     onPress={start}
                 />
-
+                {/* Botão de login */}
                 <TouchableOpacity style={styles.login} onPress={entrar}>
                     <Text style={styles.tituloLogin}> Entrar</Text>
                 </TouchableOpacity>
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     banner: {
-        ...StyleSheet.absoluteFillObject, 
+        ...StyleSheet.absoluteFillObject,   // Ocupar toda a tela
         width: '100%',
         height: '100%',
     },
